@@ -1,4 +1,0 @@
-git clone 網址
-git add .
-git commit -m"commit做的更新"
-git push
