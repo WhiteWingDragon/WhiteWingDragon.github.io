@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2017動畫番表</title>
+
+    <link href="../assets/img/logo.png" rel="icon">
+    <link href="../assets/img/logobig.png" rel="logobig.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous">
+        </script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
+    </script>
+
+
+    <div class="container-fluid">
+        <div class="title">
+            2017番表
+            <!-- Sun -->
+        </div>
+        <div class="main">
+            <!-- <thead>
+                <tr>
+                    <th>img</th>
+                    <th>name</th> -->
+            <!-- <th>kw</th> -->
+            <!-- <th>hp</th>
+                </tr>
+            </thead> -->
+
+            <!-- <div class="wrap">
+                <div class="overlay">
+                    <img src=" " alt=" " style="width:100%">
+                    <p>Red</p>
+                    <div class="shades">
+                        <div class="shade">Indianred</div>
+                        <div class="shade">Crimson</div>
+                        <div class="shade">Tomato</div>
+                    </div>
+                </div>
+            </div> -->
+
+
+        </div>
+    </div>
+
+
+    <!-- <script src="./test.json"></script> -->
+
+
+
+    <!-- <table id="dt" class="display compact hover"> -->
+    <script>
+        $.getJSON('./Copy of 2017Q4.json')
+            // Object.entries(people).forEach((name) => {
+            //   console.log(name); // ['001', {...}]
+
+            .done(function (res) {
+                console.log('res', res);
+
+                let data = res.Sun;
+                let dataText = '';
+                
+
+
+                Object.entries(res).forEach(item => {
+                    console.log(item[1]);
+
+                    item[1].forEach(element => {
+                        
+                        dataText += `
+                        <a href="${element.hp}">
+                        <div class="wrap">
+                            <img src=" ${element.img}" alt=" " style="width:100%">
+                            <div class="shades">
+                                <div class="shade">${element.name}</div>
+                            </div>
+                        </div>
+                        </a>`;
+                    });
+                });
+
+
+
+            //     data.forEach(myFunction);
+            //     function myFunction(item, index) {
+            //         dataText += `
+            //         <div class="wrap">
+            //             <img src=" " alt=" " style="width:100%">${item.img}</img>
+            //             <div class="shades">
+            //                 <div class="shade">${item.name}</div>
+            //                 <div class="shade">${item.hp}</div>
+            //             </div>
+            //         </div>
+            //   `;
+            //     }
+                
+                const main = $('.main');
+                main.append(dataText);
+            })
+
+            .catch(function (error) {
+                console.log(error);
+            })
+            .then(function () {
+            });
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
